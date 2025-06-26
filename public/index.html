@@ -396,20 +396,7 @@
         <div id="victoryModal" class="victory-modal">
             <div class="victory-content">
                 <div class="victory-title" id="victoryTitle">🏆 VICTORY! 🏆</div>
-                <div class="victory-subtitle" id="victorySubtitle">玩家1 获得胜利！</div>
-
-                <div class="ready-status">
-                    <div class="player-ready">
-                        <span>玩家1 状态:</span>
-                        <span id="player1ReadyStatus" class="not-ready">等待确认</span>
-                    </div>
-                    <div class="player-ready">
-                        <span>玩家2 状态:</span>
-                        <span id="player2ReadyStatus" class="not-ready">等待确认</span>
-                    </div>
-                </div>
-
-                <button id="readyButton" class="ready-button">准备下一轮</button>
+                <div class="victory-subtitle" id="victorySubtitle">恭喜玩家1获胜！</div>
             </div>
         </div>
     </div>
@@ -852,16 +839,6 @@
                 this.victoryModal = document.getElementById('victoryModal');
                 this.victoryTitle = document.getElementById('victoryTitle');
                 this.victorySubtitle = document.getElementById('victorySubtitle');
-                this.readyButton = document.getElementById('readyButton');
-                this.player1ReadyStatus = document.getElementById('player1ReadyStatus');
-                this.player2ReadyStatus = document.getElementById('player2ReadyStatus');
-
-                // 准备按钮点击事件
-                this.readyButton.addEventListener('click', () => {
-                    this.readyButton.disabled = true;
-                    this.readyButton.textContent = '已确认';
-                    this.publish(this.viewId, "player-ready", {});
-                });
 
                 this.render();
             }
@@ -980,15 +957,7 @@
 
                 // 显示胜利模态框
                 this.victoryTitle.textContent = `🏆 VICTORY! 🏆`;
-                this.victorySubtitle.textContent = `玩家${winner} 获得胜利！`;
-
-                // 重置按钮和状态
-                this.readyButton.disabled = false;
-                this.readyButton.textContent = '准备下一轮';
-                this.player1ReadyStatus.textContent = '等待确认';
-                this.player1ReadyStatus.className = 'not-ready';
-                this.player2ReadyStatus.textContent = '等待确认';
-                this.player2ReadyStatus.className = 'not-ready';
+                this.victorySubtitle.textContent = `恭喜玩家${winner}获胜！`;
 
                 // 显示模态框
                 this.victoryModal.classList.add('show');
